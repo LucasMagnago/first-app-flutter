@@ -1,3 +1,4 @@
+import 'package:first_app_flutter/pages/home.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -9,8 +10,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool showPassword = false;
-  String email = '';
-  String password = '';
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +67,10 @@ class _LoginPageState extends State<LoginPage> {
                   height: 50,
                   margin: const EdgeInsets.all(15),
                   alignment: Alignment.centerLeft,
-                  child: const TextField(
+                  child: TextField(
+                    controller: emailController,
                     style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                           color: Color.fromRGBO(134, 71, 173, 1),
@@ -91,6 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                   margin: const EdgeInsets.all(15),
                   alignment: Alignment.centerLeft,
                   child: TextField(
+                    controller: passwordController,
                     obscureText: showPassword,
                     style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
@@ -133,7 +136,26 @@ class _LoginPageState extends State<LoginPage> {
                   child: SizedBox(
                     width: double.infinity,
                     child: TextButton(
-                      onPressed: () => {},
+                      onPressed: () => {
+                        if (emailController.text.trim() == 'lucas@gmail.com' &&
+                            passwordController.text.trim() == '123')
+                          {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomePage(),
+                              ),
+                            ),
+                          }
+                        else
+                          {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('User/Password incorrect!'),
+                              ),
+                            ),
+                          }
+                      },
                       style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(
                           const Color.fromRGBO(134, 71, 173, 1),
