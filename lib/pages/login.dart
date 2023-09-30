@@ -55,19 +55,21 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
                 margin: const EdgeInsets.all(15),
                 alignment: Alignment.centerLeft,
-                decoration: const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      width: 2,
+                child: const TextField(
+                  decoration: InputDecoration(
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color.fromRGBO(134, 71, 173, 1),
+                      ),
+                    ),
+                    prefixIcon: Icon(
+                      Icons.email_outlined,
                       color: Color.fromRGBO(134, 71, 173, 1),
                     ),
-                  ),
-                ),
-                child: const Text(
-                  'E-mail: ',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+                    hintText: 'E-mail',
+                    hintStyle: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -76,20 +78,25 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
                 margin: const EdgeInsets.all(15),
                 alignment: Alignment.centerLeft,
-                decoration: const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      width: 2,
-                      color: Color.fromRGBO(134, 71, 173, 1),
-                    ),
-                  ),
-                ),
-                child: const Text(
-                  'Senha: ',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
+                child: const TextField(
+                  decoration: InputDecoration(
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color.fromRGBO(134, 71, 173, 1),
+                        ),
+                      ),
+                      prefixIcon: Icon(
+                        Icons.lock_outline,
+                        color: Color.fromRGBO(134, 71, 173, 1),
+                      ),
+                      hintText: 'Senha',
+                      hintStyle: TextStyle(
+                        color: Colors.white,
+                      ),
+                      suffixIcon: Icon(
+                        Icons.visibility_outlined,
+                        color: Color.fromRGBO(134, 71, 173, 1),
+                      )),
                 ),
               ),
               const SizedBox(
