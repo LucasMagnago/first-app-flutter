@@ -37,7 +37,9 @@ class _HomePageState extends State<HomePage> {
                 child: Text('Random number: $randomNumber'),
               ),
             ),
-            Expanded(
+            SizedBox(
+              width: 100,
+              height: 100,
               child: Container(
                 color: Colors.purple,
                 child: Text('Quantidade de números gerados: $contNumbers'),
