@@ -12,6 +12,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  PageController pageController = PageController(initialPage: 0);
+  int position = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -82,11 +85,40 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        body: PageView(
-          children: const [
-            Page1(),
-            Page2(),
-            Page3(),
+        body: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                controller: pageController,
+                onPageChanged: (position) => {
+                  setState(() {
+                    this.position = position;
+                  }),
+                },
+                children: const [
+                  Page1(),
+                  Page2(),
+                  Page3(),
+                ],
+              ),
+            ),
+            BottomNavigationBar(
+              currentIndex: position,
+              onTap: (value) => {
+                pageController.jumpToPage(value),
+                position = value,
+              },
+              items: const [
+                BottomNavigationBarItem(
+                  label: 'Home',
+                  icon: Icon(Icons.home),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Home',
+                  icon: Icon(Icons.help_center_outlined),
+                ),
+              ],
+            )
           ],
         ),
       ),
