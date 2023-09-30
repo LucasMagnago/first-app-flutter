@@ -8,6 +8,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool showPassword = false;
+  String email = '';
+  String password = '';
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -86,25 +90,35 @@ class _LoginPageState extends State<LoginPage> {
                   height: 50,
                   margin: const EdgeInsets.all(15),
                   alignment: Alignment.centerLeft,
-                  child: const TextField(
-                    style: TextStyle(color: Colors.white),
+                  child: TextField(
+                    obscureText: showPassword,
+                    style: const TextStyle(color: Colors.white),
                     decoration: InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Color.fromRGBO(134, 71, 173, 1),
                           ),
                         ),
-                        prefixIcon: Icon(
+                        prefixIcon: const Icon(
                           Icons.lock_outline,
                           color: Color.fromRGBO(134, 71, 173, 1),
                         ),
                         hintText: 'Senha',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Colors.white,
                         ),
-                        suffixIcon: Icon(
-                          Icons.visibility_outlined,
-                          color: Color.fromRGBO(134, 71, 173, 1),
+                        suffixIcon: GestureDetector(
+                          onTap: () => {
+                            setState(() {
+                              showPassword = !showPassword;
+                            })
+                          },
+                          child: Icon(
+                            showPassword
+                                ? Icons.visibility_outlined
+                                : Icons.visibility_off_outlined,
+                            color: const Color.fromRGBO(134, 71, 173, 1),
+                          ),
                         )),
                   ),
                 ),
