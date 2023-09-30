@@ -100,15 +100,31 @@ class _LoginPageState extends State<LoginPage> {
                 height: 50,
                 margin: const EdgeInsets.all(15),
                 alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: const Color.fromRGBO(134, 71, 173, 1),
-                    borderRadius: BorderRadius.circular(10)),
-                child: const Text(
-                  'ENTRAR',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
+                child: SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: () => {},
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                        const Color.fromRGBO(134, 71, 173, 1),
+                      ),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      fixedSize: MaterialStateProperty.all(
+                        const Size.fromHeight(45),
+                      ),
+                    ),
+                    child: const Text(
+                      'ENTRAR',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
                 ),
               ),
