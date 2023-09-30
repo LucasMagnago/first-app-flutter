@@ -69,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                   alignment: Alignment.centerLeft,
                   child: TextField(
                     controller: emailController,
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                     decoration: const InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
