@@ -1,4 +1,5 @@
 import 'package:first_app_flutter/pages/dados_cadastrais.dart';
+import 'package:first_app_flutter/pages/login.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -100,12 +101,57 @@ class CustomDrawer extends StatelessWidget {
           ),
           const Divider(),
           InkWell(
-              onTap: () => {},
-              child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: const Text('Configurações'))),
+            onTap: () => {},
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              child: const Text('Configurações'),
+            ),
+          ),
           const Divider(),
+          InkWell(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext bc) {
+                  return AlertDialog(
+                    elevation: 10,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8)),
+                    ),
+                    title: const Text('Meu App'),
+                    content: const Wrap(
+                      children: [
+                        Text('Deseja sair do aplicativo?'),
+                      ],
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Não'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginPage(),
+                            ),
+                          );
+                        },
+                        child: const Text('Sim'),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              child: const Text('Sair'),
+            ),
+          ),
         ],
       ),
     );
