@@ -1,7 +1,8 @@
 import 'package:first_app_flutter/pages/dados_cadastrais.dart';
 import 'package:first_app_flutter/pages/card.dart';
-import 'package:first_app_flutter/pages/page2.dart';
-import 'package:first_app_flutter/pages/page3.dart';
+import 'package:first_app_flutter/pages/image_assets.dart';
+import 'package:first_app_flutter/pages/list_view_horizontal.dart';
+import 'package:first_app_flutter/pages/list_view_vertical.dart';
 import 'package:first_app_flutter/shared/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -36,12 +37,14 @@ class _HomePageState extends State<HomePage> {
                 },
                 children: const [
                   CardPage(),
-                  Page2(),
-                  Page3(),
+                  ImageAssetsPage(),
+                  ListViewVerticalPage(),
+                  ListViewHorizontalPage(),
                 ],
               ),
             ),
             BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
               currentIndex: position,
               onTap: (value) => {
                 pageController.jumpToPage(value),
@@ -53,8 +56,16 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(Icons.home),
                 ),
                 BottomNavigationBarItem(
-                  label: 'Home',
+                  label: 'Page 2',
                   icon: Icon(Icons.help_center_outlined),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Page 3',
+                  icon: Icon(Icons.access_time_outlined),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Page 4',
+                  icon: Icon(Icons.smart_toy),
                 ),
               ],
             )
